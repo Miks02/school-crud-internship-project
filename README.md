@@ -45,7 +45,7 @@ The database consists of 4 related tables:
 
 ## 🖼️ Screenshots
 
-_Add screenshots of the app UI here_
+Screenshots are at the bottom of this file
 
 ---
 

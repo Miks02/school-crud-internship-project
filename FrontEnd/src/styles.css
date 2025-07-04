@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: rgb(147, 146, 146);
+}
+
+.loading-overlay {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity 3s ease-in-out;
+}
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-overlay .loader-content {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-overlay .loader-content h1 {
+  color: rgb(194, 12, 12);
+  position: absolute;
+  top: -150%;
+  font-size: 3rem;
+  font-weight: 750;
+  border: 0.3px solid lightgray;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: rgba(204, 199, 199, 0.5);
+}
+.loading-overlay .loader-content .logo {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  border: 5px solid rgb(217, 5, 5);
+  border-top: 8px solid rgb(240, 237, 237);
+  border-style: groove;
+  animation: spinReverse 4s linear infinite;
+  z-index: 2;
+}
+.loading-overlay .loader-content .spinner {
+  position: absolute;
+  border: 10px solid rgb(217, 5, 5);
+  border-style: dashed;
+  border-radius: 100%;
+  width: 215px;
+  height: 215px;
+  animation: spin 3s linear infinite;
+  z-index: 3;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinReverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}/*# sourceMappingURL=styles.css.map */

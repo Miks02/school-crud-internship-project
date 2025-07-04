@@ -1,0 +1,243 @@
+   
+   <div class="container">
+    <div class="container-box info">
+        <h4 class="component-heading">Odeljenja</h4>
+        <h3 class="component-heading sub">Unos/Izmena odeljenja</h3>
+    </div>
+    
+    <div class="container-box">
+        <form  class="form-container" [formGroup]="odeljenjeForma">
+            
+            
+            <div class="form-box-container">
+                <div class="form-box">
+                    
+                    <div class="form-group">
+                        <label>Školska godina</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <select formControlName="skolskaGodinaId" class="form-control">
+                                
+                                @for(godina of SkolskeGodine; track $index) {
+                                    <option [value]="godina.id">{{godina.vrednost}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Razred</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <select formControlName="razredId" class="form-control" >      
+                                @for(razred of Razredi; track $index) {
+                                    <option [value]="razred.vrednost">{{razred.vrednost}}</option>
+                                }
+                   
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Naziv odeljenja</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <input type="text" formControlName="naziv">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Vrsta odeljenja</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <select formControlName="vrstaOdeljenjaId" class="form-control" >
+                                
+                                @for(vrsta of VrsteOdeljenja; track $index) {
+                                    
+                                    <option [value]="vrsta.id">{{vrsta.vrednost}}</option>
+                                }
+                            </select>
+                        </div>
+                        
+                    </div>  
+                    
+                </div>
+                
+                <div class="form-box">
+                    
+                    <div class="form-group">
+                        <label>Program</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <select formControlName="programId" class="form-control">
+                                
+                                @for(program of Programi; track $index) {
+                                    <option [value]="program.id">{{program.vrednost}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Odeljenski starešina</label>
+                        <div class="form-control-container">
+                            
+                           
+                            
+                            <input type="text" formControlName="odeljenskiStaresina" >
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Smena nastave</label>
+                        <div class="form-control-container">
+                            
+                         
+                            
+                            <select formControlName="smena" class="form-control"  >
+                                <option value="1">1. Smena</option>
+                                <option value="2">2. Smena</option>
+                                <option value="3">Celodnevna nastava</option>
+                                
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Jezik nastave</label>
+                        <div class="form-control-container">
+                            
+                            <span class="required">*</span>
+                            
+                            <select formControlName="jezikNastaveId" class="form-control" >
+                                @for(jezik of JeziciNastave; track $index) {
+                                    
+                                    <option [value]="jezik.id">{{jezik.vrednost}}</option>
+                                }
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            
+            <div class="form-box-container">
+                <div class="form-box">
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="kombinovano" class="form-check-input" id="kombinovano">
+                        <label for="kombinovano" class="form-check-label">Kombinovano odeljenje</label>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="celodnevno" class="form-check-input" id="celodnevna">
+                        <label for="celodnevna" class="form-check-label">Celodnevna nastava</label>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="izdvojeno" class="form-check-input" id="izdvojeno" />
+                        <label for="izdvojeno" class="form-check-label">Izdvojeno odeljenje</label>
+                    </div>
+                    
+                    <div class="form-group" *ngIf="odeljenjeForma.get('izdvojeno')?.value">
+                        <label>Naziv izdvojene škole</label>
+                        <div class="form-control-container">
+                            <span class="required">*</span>
+                            <input type="text" class="form-control" formControlName="nazivIzdvojeneSkole" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-box">
+                    <div class="form-check">
+                        <input type="checkbox" formControlName="dvojezicno" class="form-check-input" id="dvojezicno" />
+                        <label for="dvojezicno" class="form-check-label">Dvojezično odeljenje / klasa</label>
+                    </div>
+                    
+                    <div class="form-group" *ngIf="odeljenjeForma.get('dvojezicno')?.value">
+                        <label>Prvi strani jezik</label>
+                        <div class="form-control-container">
+                            <span class="required">*</span>
+                            <select formControlName="prviStraniJezikId" class="form-control">
+                                @for(prviStrani of StraniJezici; track $index) {
+                                    
+                                    <option [value]="prviStrani.id">{{prviStrani.vrednost}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div> 
+                    
+                </div>            
+                
+            </div>
+            
+            <div class="form-container">
+                <div class="form-box-container row">
+                    <div class="form-box">
+                        <div class="form-group">
+                            <label>Broj učenika</label>
+                            <div class="form-control-container">
+                                
+                                <span class="required">*</span>
+                                
+                                <input type="number"  placeholder="0" formControlName="brojUcenika">
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Broj učenica</label>
+                            <div class="form-control-container">
+                                
+                                <span class="required">*</span>
+                                
+                                <input type="number"  placeholder="0" formControlName="brojUcenica">
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Ukupan broj učenika</label>
+                            <div class="form-control-container">
+                                
+                                <span class="required">*</span>
+                                
+                                <input type="number"  placeholder="0" formControlName="ukupanBrojUcenika">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            
+            <div class="form-actions">
+                @if(isEditMode) {
+                    <button class="btn btn-close" type="button" (click)="onCancel('odeljenje-tabela')">Odustani</button>
+                }
+                @else {
+                    <button class="btn btn-close" type="button" (click)="onCancel('razred-tabela')">Odustani</button>
+                }
+                
+                
+                <button class="btn btn-submit" type="submit" (click)="onSubmit()" [disabled]="odeljenjeForma.invalid">Sačuvaj</button>
+            </div>
+        </form>
+    </div>
+    
+    
+</div>
+
+

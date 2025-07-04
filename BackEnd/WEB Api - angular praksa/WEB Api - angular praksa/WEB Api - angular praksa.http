@@ -1,0 +1,6 @@
+@WEB_Api___angular_praksa_HostAddress = http://localhost:5119
+
+GET {{WEB_Api___angular_praksa_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,72 @@
+
+
+<div class="body-wrapper">
+    <main>
+        
+        <div class="wrapper">
+            <aside id="sidebar">
+                <div class="logo">
+                    <img src="/ITS-Logo.png" alt="">
+                </div>
+                <nav id="sidebar-nav">
+                    <ul>
+                        <li><a routerLink = ''>Početna</a></li>
+                        <li><a routerLink = '/razred-forma'>Dodaj razred</a></li>
+                        <li><a routerLink="/razred-tabela">Prikaži razrede</a></li>
+                        <li><a routerLink="/odeljenje-tabela">Prikaži odeljenja</a></li>
+                        
+                        
+                        
+                    </ul>
+                </nav>
+                
+            </aside>
+            
+            <div class="content-container">
+                <header>
+                    
+                    <app-test></app-test>
+                    <div class="app-heading">
+                        <h1>WEB Aplikacija - Comtrade praksa</h1>
+                    </div>
+                </header>
+                
+                <div class="component-wrapper">
+                    <router-outlet></router-outlet>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+        
+        <footer>
+            <h4>ITS - Visoka škola strukovnih studija za informacione tehnologije</h4>
+        </footer>
+    </main>
+    
+    
+    
+</div>
+
+<div class="global-modal-overlay" *ngIf="modalData">
+    <div class="global-modal">
+        <h2>{{ modalData.title }}</h2>
+        <p id="message">{{ modalData.message }}</p>
+        <p id="errorMessage">{{ modalData.errorMessage }}</p>
+        
+        <div class="modal-buttons">
+            <button class="btn btn-close"(click)="cancel()" *ngIf="modalData?.onCancel">
+                {{ modalData.cancelText || 'Otkaži' }}
+            </button>
+            <button class="btn btn-submit"(click)="confirm()">
+                {{ modalData.confirmText || 'Potvrdi' }}
+            </button>
+        </div>
+    </div>
+</div>
+
+
+

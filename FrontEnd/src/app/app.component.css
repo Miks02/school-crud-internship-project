@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+.body-wrapper {
+  font-size: 1.15rem;
+}
+.body-wrapper main {
+  max-width: 1500px;
+  width: 80%;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-shadow: 0 0 40px #333;
+}
+.body-wrapper main .wrapper {
+  display: flex;
+  min-height: 95vh;
+}
+.body-wrapper main .wrapper #sidebar {
+  border-right: 1px solid rgb(184, 181, 181);
+  background-color: #dedada;
+}
+.body-wrapper main .wrapper #sidebar .logo {
+  display: flex;
+  border-bottom: 1px solid rgb(184, 181, 181);
+}
+.body-wrapper main .wrapper #sidebar .logo img {
+  max-width: 13rem;
+}
+.body-wrapper main .wrapper #sidebar #sidebar-nav {
+  text-align: center;
+}
+.body-wrapper main .wrapper #sidebar #sidebar-nav li a {
+  display: block;
+  padding: 1.2rem;
+  font-weight: 600;
+  color: rgb(163, 54, 14);
+  transition: 0.3s ease;
+}
+.body-wrapper main .wrapper #sidebar #sidebar-nav li a:hover {
+  background-color: white;
+  box-shadow: 0 0 5px #333;
+}
+.body-wrapper main .wrapper .content-container {
+  width: 100%;
+}
+.body-wrapper main .wrapper .content-container header {
+  background-color: #dedada;
+  display: flex;
+  padding: 2.38rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.body-wrapper main .wrapper .content-container header .app-heading {
+  color: rgb(154, 7, 7);
+  text-align: center;
+}
+.body-wrapper main footer {
+  border-top: 1px solid rgb(84, 81, 81);
+  text-align: center;
+  background-color: rgb(100, 98, 98);
+  color: rgb(246, 162, 6);
+  padding: 0.6rem;
+  width: 100%;
+}/*# sourceMappingURL=app.component.css.map */

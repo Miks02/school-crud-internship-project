@@ -1,0 +1,108 @@
+<div class="container">
+    
+    <div class="container-box info">
+        <h4 class="component-heading">Razredi</h4>
+        @if(isEditMode) {
+            <h3 class="component-heading sub">Izmena razreda</h3>
+            
+        }
+        @else {
+            <h3 class="component-heading sub">Dodavanje razreda</h3>
+        }
+    </div>
+    <form  class="form-container" [formGroup]="razredForma">
+        
+        <div class="form-box-container">
+            <div class="form-box">
+                
+                <div class="form-group">
+                    <label>Školska godina</label>
+                    <div class="form-control-container">
+                        
+                        <span class="required">*</span>
+                        
+                        <select formControlName="skolskaGodina" class="form-control" required>
+                            @for(godina of SkolskeGodine; track $index) {
+                                <option [value]="godina.id">{{godina.vrednost}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Razred</label>
+                    <div class="form-control-container">
+                        
+                        <span class="required">*</span>
+                        
+                        <select formControlName="razred" class="form-control" required>
+                            @for(razred of Razredi; track $index) {
+                                <option [value]="razred.vrednost">{{razred.vrednost}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>  
+                
+            </div>
+            
+            <div class="form-box">
+                
+                <div class="form-group">
+                    <label>Program</label>
+                    <div class="form-control-container">
+                        
+                        <span class="required">*</span>
+                        
+                        <select formControlName="program" class="form-control" required>
+                            @for(program of Programi; track $index) {
+                               
+                                <option [value]="program.id">{{program.vrednost}}</option>
+                            }
+                            
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="form-box-container row">
+            <div class="form-box">
+                <div class="form-group">
+                    <label>Ukupan broj učenika</label>
+                    <div class="form-control-container">
+                        
+                        
+                        
+                        <input type="number" placeholder="0" formControlName="UkupanBrojUcenika"> 
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label>Ukupan broj odeljenja</label>
+                    <div class="form-control-container">
+                        
+                        
+                        
+                        <input type="number" placeholder="0" formControlName="UkupanBrojOdeljenja">
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+        
+        <div class="form-actions">
+            @if(isEditMode) {
+                <button class="btn btn-close" (click)="onCancel()">Odustani</button>
+                
+            }
+            <button type="submit" [disabled]="razredForma.invalid" (click)="onSubmit()" class="btn btn-submit" >Sačuvaj</button>
+        </div>
+    </form>
+    
+    
+</div>

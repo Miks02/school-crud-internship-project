@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+<div class="container">
+    
+    <div class="container-box info" id="container-box">
+        <h2 class="component-heading">Razredi</h2>
+        <h3 class="component-heading sub">Tabelarni prikaz svih razreda</h3>
+    </div>
+    
+    
+    @if(razredi.length == 0) {
+        <h4 class="component-heading">Tabela je prazna!</h4>
+        <div class="container-box">
+            
+            <div class="stats-box">
+                <h4>Da li želite da dodate razred ?</h4>
+                <button (click)="onRedirect()" class="btn btn-submit" style="margin-top: 2rem;">Dodaj razred</button>
+            </div>
+        </div>
+    }
+    @else {
+        
+        <div class="table-controls">
+            <select id="dropdown" (change)="onSelectSortChange($event.target)">
+                <option value="Podrazumevano">Podrazumevano</option>      
+                <option value="SkolskaGodina" >Školska godina</option>
+                <option value="NazivRazreda" >Naziv razreda</option>
+                <option value="Program" >Program</option>
+            </select>
+            
+            <div id="pagination">
+                <button class="page-btn" (click)="promeniStranu(trenutnaStrana - 1)" [disabled]="trenutnaStrana === 1">«</button>
+                @for(broj of stranice; track $index) {
+                    <button 
+                    class="page-btn"
+                    [class.active]="broj === trenutnaStrana"
+                    (click) = "promeniStranu(broj)">{{broj}}</button>
+                }
+                
+                <button class="page-btn" (click)="promeniStranu(trenutnaStrana + 1)" [disabled]="trenutnaStrana === ukupnoStrana">»</button>
+            </div>
+        </div>
+        
+        
+        
+        <div class="grid-table">
+            
+            <table>
+                
+                <thead>
+
+                    <tr>
+                        
+                        <th>Školska godina</th>
+                        <th>Razred</th>
+                        <th>Program</th>
+                        <th>Broj odeljenja klasa</th>
+                        <th>Ukupan broj učenika</th>
+                        <th>Pregled / izmena</th>
+                        <th>Obriši</th>
+                        <th>Dodaj odeljenje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    
+                    @for( razred of paginiraniPodaci; track $index) {
+                        <tr>
+                            <td>{{razred.SkolskaGodina}}</td>
+                            <td>{{razred.NazivRazreda}}</td>
+                            <td>{{razred.Program}}</td> 
+                            <td>{{razred.UkupanBrojOdeljenja}}</td>
+                            <td>{{razred.UkupanBrojUcenika}}</td>
+                            <td><button (click)="onEdit(razred.Id)">✏️</button></td>
+                            <td><button (click)="onDelete(razred.Id)">🗑️</button></td>
+                            <td><button (click)="onAddOdeljenje(razred.Id)">➕</button></td>
+                            
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    }
+    
+    
+    
+    
+    
+    
+    
+</div>
+
